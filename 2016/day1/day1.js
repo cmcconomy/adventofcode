@@ -3,6 +3,7 @@ var input = document.body.textContent.split(", ");
 var dirs = ["N", "E", "S", "W"];
 var person = {facing:0, x:0, y:0};
 var visited = {};
+var firstVisit = null;
 
 var turn = (person, turn) => {
   if( turn[0] == "R" ) { person.facing = (person.facing+1)%4;}
@@ -14,16 +15,18 @@ var takeSteps = (person, prop, dist) => {
   var newVal = person[prop] + Number(dist);
   for( var i=Math.min(person[prop],newVal); i<=Math.max(person[prop],newVal); i++ ) {
     if( person[prop] != i) {
-      let label;
+      let x,y;
       if( prop == "x" ) {
-        label=i + ":" + person.y;
+        x=i;
+        y=person.y;
       } else {
-        label=person.x + ":" + i;
+        x=person.x;
+        y=i;
       }
-      if( visited[label] == 1 ) {
-        console.log(label);
+      if( visited[x+":"+y] == 1 && firstVisit == null) {
+        firstVisit = {x:x,y:y};
       }
-      visited[label] = 1;
+      visited[x+":"+y] = 1;
     }
   }
   person[prop] = newVal;
@@ -57,4 +60,5 @@ var move = (person, move) => {
 
 person = input.reduce(move, person);
 
-console.log(person);
+console.log("Solution 1: " + (Math.abs(person.x) + Math.abs(person.y)));
+console.log("Solution 2: " + (Math.abs(firstVisit.x) + Math.abs(firstVisit.y)));

@@ -1,5 +1,8 @@
-var delimiter = ", ";
+var delimiter = "\n";
 var input = document.body.textContent.split(delimiter);
+input = input.filter((item)=>{return item.length > 0});
+
+var clone = (obj) => {return Object.assign({},obj)};
 // input = "";
 
 var transform = (input) => {

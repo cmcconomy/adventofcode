@@ -1,12 +1,21 @@
+import unittest;
 import re;
 
 problem_num='1'
 inputfile='input.txt'
 
+#########
+# Setup
+#########
+
 with open(inputfile) as f:
   lines = [line for line in f.read().split('\n') if len(line)>0]
 
 line = lines[0]
+
+#########
+# Funcs
+#########
 
 def conga_line_add(input_str):
   value=0;
@@ -42,8 +51,32 @@ def part1():
 def part2():
   return conga_jump_add(line)
 
+#########
+# Tests
+#########
+
+class TestSolution(unittest.TestCase):
+  def test_Part1(self):
+    self.assertEqual(conga_line_add('1122'),3)
+    self.assertEqual(conga_line_add('1111'),4)
+    self.assertEqual(conga_line_add('1234'),0)
+    self.assertEqual(conga_line_add('91212129'),9)
+
+  def test_Part2(self):
+    self.assertEqual(conga_jump_add('1212'),6)
+    self.assertEqual(conga_jump_add('1221'),0)
+    self.assertEqual(conga_jump_add('123425'),4)
+    self.assertEqual(conga_jump_add('123123'),12)
+    self.assertEqual(conga_jump_add('12131415'),4)
+
+if __name__ == '__main__':
+  unittest.main()
+
+#########
+# Main
+#########
+
 print( 'Solution for Problem ' + problem_num)
 print( 'Part 1: ' + str(part1()) )
 print( 'Part 2: ' + str(part2()) )
-
 

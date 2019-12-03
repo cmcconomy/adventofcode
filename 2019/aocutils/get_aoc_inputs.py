@@ -2,8 +2,6 @@ import os
 import requests
 from dotenv import load_dotenv
 
-print("it works")
-
 load_dotenv()
 
 # This section permits a lazy way to retrieve your personal inputs.
@@ -22,4 +20,3 @@ def get_aoc_inputs(day):
         'session': os.getenv("AOC_SESSION")
     }
     return requests.get(url,cookies=cookies).text.split()
-

@@ -1,6 +1,9 @@
 # adventofcode
-Advent Of Code solutions
+Advent Of Code solutions - years of play!
 
-This year's javascript solutions for http://adventofcode.com/ where I'm playing as cmcconomy.
-
-Generally I open the data file, eg. http://adventofcode.com/2016/day/1/input, open the chrome developer panel, and get going with something that parses the data and works with it. The boilerplate.js file would generally be my approach.
+* 2015-2016: Javascript
+* 2017: Python
+* 2018-2019: Python Notebook
+* 2020: ???
+* 2021-2022: Python
+* 2023: Golang
